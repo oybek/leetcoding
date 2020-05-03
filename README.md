@@ -1,7 +1,9 @@
 
 > My codewars, leetcode training result
 
-Here is the list in format `<problem> <my approach> [tip]
+Here is the list in format <problem> <my approach> [tip]
+
+- `The boolean order` **Divide N Conqueror + Memoization**
 
 # CodeWars
 

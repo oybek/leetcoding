@@ -1,6 +1,6 @@
 package io.github.oybek.leetcode
 
-import io.github.oybek.leetcode.AddBinary._
+import AddBinary._
 import org.scalatest.funsuite.AnyFunSuite
 
 class AddBinarySpec extends AnyFunSuite {
