@@ -4,4 +4,6 @@
 out/
 target/
 projects/target/
+**/*.o
+**/*.hi
 
