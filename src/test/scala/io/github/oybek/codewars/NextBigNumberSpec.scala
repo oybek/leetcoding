@@ -6,28 +6,26 @@ import java.util.function.Predicate
 import org.scalatest.{FlatSpec, Matchers}
 
 class NextBigNumberSpec extends FlatSpec with Matchers {
-  import NextBigNumber._
-
   "NextBigNumber" should "pass sample tests" in {
-    assert(nextBiggerNumber(12)   ==   21)
-    assert(nextBiggerNumber(144)  ==  414)
-    assert(nextBiggerNumber(414)  ==  441)
-    assert(nextBiggerNumber(513)  ==  531)
-    assert(nextBiggerNumber(2017) == 2071)
-  }
+    val fs = List(NextBigNumber.nextBiggerNumber(_), (x: Long) => 0L)
 
-  "NextBigNumber" should "pass my tests" in {
-    assert(nextBiggerNumber(21)  == -1)
-    assert(nextBiggerNumber(111) == -1)
-  }
-
-  "NextBigNumber" should "pass codewars tests" in {
-    assert(nextBiggerNumber(717018444) == 717041448)
-    assert(nextBiggerNumber(59884848459853L) == 59884848483559L)
-    assert(nextBiggerNumber(600820990L) == 600829090L)
+    fs.foreach { f =>
+      assert(f(12)   ==   21)
+      assert(f(144)  ==  414)
+      assert(f(414)  ==  441)
+      assert(f(513)  ==  531)
+      assert(f(2017) == 2071)
+      assert(f(21)   == -1)
+      assert(f(111)  == -1)
+      assert(f(717018444) == 717041448)
+      assert(f(59884848459853L) == 59884848483559L)
+      assert(f(600820990L) == 600829009L)
+    }
   }
 
   "Tools" should "work correct" in {
+    import NextBigNumber._
+
     isSorted("123") should be (true)
     isSorted("111112") should be (true)
     isSorted("11111") should be (true)
