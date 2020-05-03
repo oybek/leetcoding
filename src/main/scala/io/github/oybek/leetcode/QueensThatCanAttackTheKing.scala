@@ -1,3 +1,5 @@
+package io.github.oybek.leetcode
+
 import NQueens.{King, Queen}
 
 // Solution of: https://leetcode.com/problems/queens-that-can-attack-the-king/

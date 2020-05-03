@@ -1,3 +1,4 @@
+package io.github.oybek.leetcode
 
 // https://leetcode.com/problems/count-of-range-sum/
 object CountOfRangeSum extends App {

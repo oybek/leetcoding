@@ -1,5 +1,6 @@
+package io.github.oybek.leetcode
 
-object AddBinary extends App {
+object AddBinary {
   def addBinary(a: String, b: String): String =
     a.reverse.zipAll(b.reverse, '0', '0').foldLeft(List.empty[Char] -> false) {
       case ((s, false), ('0', '0')) => ('0'::s) -> false
@@ -17,8 +18,4 @@ object AddBinary extends App {
       case (s, false) => s.mkString
       case (s, true) => ('1'::s).mkString
     }
-
-  assert(addBinary("1", "1") == "10")
-  assert(addBinary("11", "1") == "100")
-  assert(addBinary("1010", "1011") == "10101")
 }

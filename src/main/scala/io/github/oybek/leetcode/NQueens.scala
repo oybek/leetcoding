@@ -1,3 +1,4 @@
+package io.github.oybek.leetcode
 
 // Solution of: https://leetcode.com/problems/n-queens/
 object NQueens extends App {
