@@ -3,15 +3,14 @@ package io.github.oybek.codewars;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.IntFunction;
 import java.util.stream.IntStream;
 
-class BooleanOrder {
+class BOrder {
     private String oo;
     private String o;
 
-    public BooleanOrder(final String operands, final String operators) {
+    public BOrder(final String operands, final String operators) {
         this.oo = operands;
         this.o = operators;
     }
