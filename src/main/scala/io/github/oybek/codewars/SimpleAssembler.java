@@ -1,20 +1,16 @@
 package io.github.oybek.codewars;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class SimpleAssembler {
     public static Map<String, Integer> interpret(String[] program) {
-        return null;
-    }
-
-    private static void _interpret(String[] program, int cur, Map<String, Integer> registers) {
-        if (cur >= program.length) {
-            return;
-        } else {
+        Map<String, Integer> registers = new HashMap<>();
+        for (int cur = 0; cur < program.length; ++cur) {
             String[] tokens = program[cur].split(" ");
             String cmd = tokens[0];
             String x = tokens[1];
-            switch (tokens[0]) {
+            switch (cmd) {
                 case "mov":
                     int y = getValue(tokens[2], registers);
                     registers.put(x, y);
@@ -26,14 +22,14 @@ public class SimpleAssembler {
                     registers.put(x, registers.get(x)-1);
                     break;
                 case "jnz":
-                    int v = getValue(tokens[1], registers);
-                    if (v != 0) {
-                    } else {
-                    }
+                    int xv = getValue(tokens[1], registers);
+                    int yv = getValue(tokens[2], registers);
+                    if (xv != 0)
+                        cur += yv-1;
                     break;
             }
-            _interpret(program, cur+1, registers);
         }
+        return registers;
     }
 
     private static int getValue(String src, Map<String, Integer> registers) {

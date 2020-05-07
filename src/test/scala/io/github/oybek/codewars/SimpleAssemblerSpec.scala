@@ -2,6 +2,9 @@ package io.github.oybek.codewars
 
 import org.scalatest.{FlatSpec, Matchers}
 
+import scala.collection.JavaConverters._
+import scala.collection.mutable
+
 class SimpleAssemblerSpec extends FlatSpec with Matchers {
   "Assembler interpreter" should "pass all tests" in {
     {
@@ -9,7 +12,7 @@ class SimpleAssemblerSpec extends FlatSpec with Matchers {
         Array("mov a 5", "inc a", "dec a", "dec a", "jnz a -1", "inc a")
       val registers =
         SimpleAssembler.interpret(program)
-      registers should be(Map("a" -> 1))
+      registers.asScala should be(mutable.Map("a" -> 1))
     }
 
     {
@@ -17,7 +20,7 @@ class SimpleAssemblerSpec extends FlatSpec with Matchers {
         Array("mov a -10", "mov b a", "inc a", "dec b", "jnz a -2")
       val registers =
         SimpleAssembler.interpret(program)
-      registers should be(Map("a" -> 0, "b" -> -20))
+      registers.asScala should be(mutable.Map("a" -> 0, "b" -> -20))
     }
   }
 }
