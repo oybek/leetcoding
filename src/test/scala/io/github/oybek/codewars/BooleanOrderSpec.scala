@@ -71,9 +71,28 @@ class BooleanOrderSpec extends FlatSpec with Matchers {
   }
 }
 
-object Tools {
+private object Tools {
   implicit class OneOf(val s: String) extends AnyVal {
     def oneOf: Char = s.charAt(Random.nextInt(s.length))
+  }
+  implicit class ArrayTools(val a: Array[Int]) extends AnyVal {
+    def applySwaps(swaps: Iterable[(Int, Int)]): Array[Int] = {
+      val b = a.clone
+      swaps.foreach {
+        case (x, y) =>
+          val t = b(x)
+          b(x) = b(y)
+          b(y) = t
+      }
+      b
+    }
+
+    def isSorted: Boolean =
+      a.sliding(2).forall {
+        case Array(x, y) => x <= y
+        case _ => true
+      }
+
   }
 }
 
